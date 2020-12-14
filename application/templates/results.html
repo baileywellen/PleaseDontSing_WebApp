@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+    
+{% block content %} 
+<p>Thank you for uploading! See your results below. </p>  
+<p>File Name: {{name}} </p>  
+<p> Our Prediction of your Z-Score: {{pred}} </p>
+<p> You sound better than {{percentage}} % of our training data</p>
+<p> Our Prediction of the Class: {{pred_class}} </p>
+
+<div class="slidecontainer">
+  <input type="range" min="-2" max="2" value={{pred}} class="slider" id="myRange">
+</div>
+
+{% endblock %}
