@@ -8,7 +8,7 @@ Created on Tue Nov 17 10:51:30 2020
 from sklearn.linear_model import Ridge 
 import pandas as pd 
 import numpy as np
-from includes.read_mp3 import get_freq_from_mp3
+from read_mp3 import get_freq_from_mp3
 
 #takes a dataframe of the training data, trains with all of our available data, and returns the model
 def train_model(training_data):
@@ -58,7 +58,7 @@ def assign_class(z_score):
 #predict a z score of a new mp3 file 
 def evaluate_recording(path_to_file):
     #first, train the model 
-    training_data = pd.read_csv("C:\\Users\\baile\\OneDrive\\Desktop\\Classes\\Fall2020Classes\\Thesis\\Please_Dont_Sing\\build_ML\\audio_differences.csv")    
+    training_data = pd.read_csv(".\\audio_differences.csv")    
     ridge_reg = train_model(training_data)
     
     #next, get the pitches of the recording we are evaluating
@@ -79,4 +79,4 @@ def evaluate_recording(path_to_file):
     
     
     
-#evaluate_recording("C:\\Users\\baile\\OneDrive\\Desktop\\Classes\\Fall2020Classes\\Thesis\\A.mp3")
+evaluate_recording("C:\\Users\\baile\\OneDrive\\Desktop\\Classes\\Fall2020Classes\\Thesis\\A.mp3")
