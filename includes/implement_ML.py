@@ -8,7 +8,7 @@ Created on Tue Nov 17 10:51:30 2020
 from sklearn.linear_model import Ridge 
 import pandas as pd 
 import numpy as np
-from read_mp3 import get_freq_from_mp3
+from includes.read_mp3 import get_freq_from_mp3
 
 #takes a dataframe of the training data, trains with all of our available data, and returns the model
 def train_model(training_data):
