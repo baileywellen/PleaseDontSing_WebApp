@@ -58,7 +58,7 @@ def assign_class(z_score):
 #predict a z score of a new mp3 file 
 def evaluate_recording(name_of_input):
     #first, train the model 
-    training_data = pd.read_csv("./includes/audio_differences.csv")    
+    training_data = pd.read_csv(".\\includes\\audio_differences.csv")    
     ridge_reg = train_model(training_data)
     
     #next, get the pitches of the recording we are evaluating
@@ -74,9 +74,7 @@ def evaluate_recording(name_of_input):
     
     
     
+ 
     
-    
-    
-    
-    
-#evaluate_recording("C:\\Users\\baile\\OneDrive\\Desktop\\Classes\\Fall2020Classes\\Thesis\\A.mp3")
+if __name__ == "__main__":   
+     evaluate_recording("C:\\Users\\baile\\OneDrive\\Desktop\\Classes\\Fall2020Classes\\Thesis\\pds_webapp\\A.mp3")

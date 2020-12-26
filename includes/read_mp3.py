@@ -94,7 +94,6 @@ def clean_arrays(pitches, confidences):
     confidences = these_confidences
     
     
-    
     # next, we will strip zeros from beginning and end of each list 
     while (len(pitches) > 0) and (pitches[0] == 0) :
         pitches.pop(0)
