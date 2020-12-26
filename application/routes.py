@@ -38,7 +38,7 @@ def success():
     if request.method == 'POST':  
         f = request.files['file']
         #save the upload to a file locally
-        f.save(f.filename)  
+        #f.save(f.filename)  
         
         dir_path = os.path.dirname(os.path.realpath(__file__))
         dir_pieces = dir_path.split("\\")
