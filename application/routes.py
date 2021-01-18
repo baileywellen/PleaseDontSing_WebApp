@@ -38,14 +38,14 @@ def success():
     if request.method == 'POST':  
         f = request.files['file']
         #save the upload to a file locally
-        #f.save(f.filename)  
+        f.save(f.filename)  
         
         #dir_path = os.path.dirname(os.path.realpath(__file__))
         #dir_pieces = dir_path.split("\\")
         #dir_to_file = "\\".join(dir_pieces[:-1])
         
         #from that file, make a prediction
-        #pred = evaluate_recording(dir_to_file + "\\" + f.filename)
-        pred = evaluate_recording("http://drive.google.com/uc?export=view&id=114sSMDHPLrbjoj6xFDRtmAeVSqrOPAZk")
+        pred = evaluate_recording(f.filename)
+        #pred = evaluate_recording("http://drive.google.com/uc?export=view&id=114sSMDHPLrbjoj6xFDRtmAeVSqrOPAZk")
         pred_class = assign_class(pred)
         return render_template("results.html", name = f.filename, pred = pred, pred_class = pred_class)  
