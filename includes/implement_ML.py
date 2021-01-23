@@ -57,7 +57,7 @@ def assign_class(z_score):
 
 #predict a z score of a new mp3 file 
 def evaluate_recording(name_of_input):
-    #first, train the model 
+    #first, train the model on our excel input
     url = "https://drive.google.com/file/d/1_8Rtvg-QbqMudUtr2ZmGQksraQZSfC14/view?usp=sharing"
     path = 'https://drive.google.com/uc?export=download&id='+url.split('/')[-2]
     training_data = pd.read_csv(path)#./includes/audio_differences.csv")    
