@@ -3,7 +3,7 @@
 #import app from the __init__ file 
 from application import app
 import os
-from flask import render_template, request, jsonify
+from flask import render_template, request
 from includes.implement_ML import evaluate_recording, assign_class
 
 #create a route to run the simple app 
@@ -39,10 +39,6 @@ def success():
         f = request.files['file']
         #save the upload to a file locally
         f.save(f.filename)  
-        
-        #dir_path = os.path.dirname(os.path.realpath(__file__))
-        #dir_pieces = dir_path.split("\\")
-        #dir_to_file = "\\".join(dir_pieces[:-1])
         
         #from that file, make a prediction
         pred = evaluate_recording(f.filename)
