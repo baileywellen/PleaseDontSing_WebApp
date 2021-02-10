@@ -69,8 +69,6 @@ def evaluate_recording(name_of_input):
     
     #create a prediction
     pred = ridge_reg.predict(np.array(clean_data).reshape(1,-1))
-    print(pred)
-    print(assign_class(pred))
     
     return pred    
     

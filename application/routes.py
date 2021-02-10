@@ -2,7 +2,6 @@
 
 #import app from the __init__ file 
 from application import app
-import os
 from flask import render_template, request
 from includes.implement_ML import evaluate_recording, assign_class
 
@@ -42,6 +41,15 @@ def success():
         
         #from that file, make a prediction
         pred = evaluate_recording(f.filename)
+
         #pred = evaluate_recording("http://drive.google.com/uc?export=view&id=114sSMDHPLrbjoj6xFDRtmAeVSqrOPAZk")
         pred_class = assign_class(pred)
-        return render_template("results.html", name = f.filename, pred = pred, pred_class = pred_class)  
+        
+        pred = pred[0][0]
+        percent = 25 * (pred + 2)
+        if percent > 100:
+            percent = 100
+        elif percent < 0:
+            percent = 0
+            
+        return render_template("results.html", name = f.filename, pred = round(percent, 3), pred_class = pred_class)  

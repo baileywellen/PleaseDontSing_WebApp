@@ -60,7 +60,6 @@ def remove_outliers(recording, confidences):
     #remove any points that are above the third quartile by more than 1.5 * the IQR 
     #we are only removing high outliers because those seem to be the result of aubio problems... we want to keep low outliers for now
     for index in range(len(recording)):
-     #   print(recording)
      if (recording[index] < (1.5 * my_iqr + q3)):
          pitches_ret_val.append(recording[index])
             

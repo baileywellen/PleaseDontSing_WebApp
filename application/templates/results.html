@@ -1,8 +1,12 @@
 {% extends "layout.html" %}
     
 {% block content %} 
-<p>File uploaded successfully</p>  
-<p>File Name: {{name}}</p>  
-<p> Our Prediction of your Score: {{pred}}</p>
-<p> Our Prediction of the Class: {{pred_class}} </p>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <p>File uploaded successfully</p>  
+            <p>File Name: {{name}}</p>  
+            <p> We predict that people would rate you at {{pred}}%. 0% means not at all enjoyable, and 100% would mean you are practically Adele. </p>
+            <p> To put it directly, you sound {{pred_class}}. (options are good, okay, or bad)  </p>
+        </div>
+    </div>
 {% endblock %}

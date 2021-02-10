@@ -17,6 +17,7 @@ body {
 
 header {
     text-align: center;
+    color = orange;
 }
 
 li {
@@ -82,6 +83,7 @@ footer {
     bottom: 0px;
 }
 
+
 .btn-submit {
     background-color: cornflowerblue;
     color: white;
@@ -95,4 +97,6 @@ footer {
 .btn-submit:hover {
     opacity: 1;
 }
+
+
 
