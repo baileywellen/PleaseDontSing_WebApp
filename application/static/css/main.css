@@ -14,7 +14,9 @@ body {
     position: relative;
     margin:0px;
     background: white;
-    color: black;
+    color: black; 
+    display: flex;
+    flex-direction: column;
     
 }
 
@@ -60,6 +62,7 @@ input[type=text]:focus, input[type=password]:focus {
     outline: none;
 }
 
+
 .top-container {
     background: black;
     padding:5px;
@@ -69,7 +72,6 @@ input[type=text]:focus, input[type=password]:focus {
     background: black;
     padding:5px;
     border-top:2px solid #0f0f0f;
-    position:absolute;
     bottom:0;
 }
 
@@ -79,6 +81,10 @@ input[type=text]:focus, input[type=password]:focus {
     margin-right: auto;
     text-align: left;
 }
+.content{
+    flex: 1 0 auto;
+}
+
 footer {
     text-align: center;
     height: 50px;
@@ -89,7 +95,9 @@ footer {
     background: black;
 }
 
-
+.footer{
+    flex-shrink: 0;
+}
 .btn-submit {
     background-color: cornflowerblue;
     color: white;

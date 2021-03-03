@@ -7,25 +7,34 @@
     <title>upload</title>  
 </head>  
 <body>  
-    <form action = "/success" method = "post" enctype="multipart/form-data">  
+    <form name = "uploadRecording" action = "/success" enctype="multipart/form-data" onsubmit="return validateForm()" method = "post" required>  
         <input type="file" name="file" accept="audio/*" id="audio-recording" capture>
-        <input type = "submit" value="Upload">  
+        <input type = "submit" value="Upload", onclick="validate_fileupload(file);">  
     </form>  
 </body>  
 </html>  
 
-
-
 <script>
-  const recorder = document.getElementById('audio-recording');
+function validateForm() {
+   var x = document.forms["uploadRecording"]["file"].value;
+  if (x == "") {
+    alert("A file must be uploaded to continue");
+    return false;
+  }
+}
 
-  recorder.addEventListener('change', function(e) {
+</script>
+
+<!--  <script>  -->
+<!--   const recorder = document.getElementById('audio-recording'); -->
+
+<!--   recorder.addEventListener('change', function(e) {
     const file = e.target.files[0];
     //save the location where the participant's file exists
     const url = URL.createObjectURL(file);
     
-  });
-</script>
+  }); 
+</script>-->
              
 <!-- BELOW is attempting to do a record button from the following link
  https://medium.com/jeremy-gottfrieds-tech-blog/javascript-tutorial-record-audio-and-encode-it-to-mp3-2eedcd466e78
