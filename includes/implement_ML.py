@@ -63,6 +63,7 @@ def evaluate_recording(name_of_input):
     #first, train the model on our excel input
     url = "https://drive.google.com/file/d/1QkeCYo7BEfiZMMzaZPYOlZZeOM4iYWg_/view?usp=sharing"
     path = 'https://drive.google.com/uc?export=download&id='+url.split('/')[-2]
+    
     training_data = pd.read_csv(path)#./includes/audio_differences.csv")    
     ridge_reg = train_model(training_data)
     

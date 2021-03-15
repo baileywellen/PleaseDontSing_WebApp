@@ -8,7 +8,7 @@ Created on Mon Oct 26 09:05:36 2020
 from aubio import source, pitch
 import numpy as np
 from scipy.stats import iqr
-
+from pydub import AudioSegment
 
 
 def read_frequencies(filename):
@@ -165,7 +165,14 @@ def make_arrays_same_length(pitches, confidences):
   
 #call all of our other functions from here - takes the filename of an mp3 file, processes the audio, and returns a list of length 1000
 def get_freq_from_mp3(filename):
-    pitches, confidences = read_frequencies(filename)
+    #convert to a wav file 
+    sound = AudioSegment.from_mp3(filename)
+    sound.export("./user_wav.wav", format="wav")
+    
+    #get the pitches and confidences from the user's input file
+    pitches, confidences = read_frequencies("./user_wav.wav")
+    
+    #clean the data to  be fed into the model
     shortened_pitches = make_arrays_same_length(pitches, confidences)
     return shortened_pitches
     

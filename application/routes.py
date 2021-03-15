@@ -32,8 +32,8 @@ def rate():
     return render_template("rate.html", rate = True)
 
 #process the audio    
-@app.route('/success', methods = ['POST'])  
-def success():  
+@app.route('/results', methods = ['POST'])  
+def results():  
     if request.method == 'POST':  
         f = request.files['file']
         #save the upload to a file locally

@@ -7,7 +7,7 @@
     <title>upload</title>  
 </head>  
 <body>  
-    <form name = "uploadRecording" action = "/success" enctype="multipart/form-data" onsubmit="return validateForm()" method = "post" required>  
+    <form name = "uploadRecording" action = "/results" enctype="multipart/form-data" onsubmit="return validateForm()" method = "post" required>  
         <input type="file" name="file" accept="audio/*" id="audio-recording" capture>
         <input type = "submit" value="Upload", onclick="validate_fileupload(file);">  
     </form>  
