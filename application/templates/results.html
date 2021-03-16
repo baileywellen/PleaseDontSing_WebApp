@@ -2,11 +2,26 @@
     
 {% block content %} 
     <div class="row">
-        <div class="col-md-12 text-center">
-            <p>File uploaded successfully</p>  
-            <p>File Name: {{name}}</p>  
-            <p> We predict that people would rate you at {{pred}}%. 0% means not at all enjoyable, and 100% would mean you are practically Adele. </p>
-            <p> To put it directly, you sound {{pred_class}}. (options are good, okay, or bad)  </p>
+        <div class="col-md-12 text-center"> 
+        <!-- Below are placeholders for the text- if it is valid input, the code will fill it with a score. If not, it will tell the user -->
+            {%if valid_input %}
+                <p id = "line1"> "File {{name}} uploaded successfully" </p>
+                <p id = "line2">"We predict that people would rate you at {{pred}}%. 0% means not at all enjoyable, and 100% would mean you are practically Adele."</p>
+                <p id = "line3">"To put it directly, you sound {{pred_class}}. (options are good, okay, or bad) "</p>
+                
+            {% else %}
+                <p id = "line1"> "Your input file was invalid or corrupted. We apologize for the inconvenience - please try again." </p>
+                
+            {% endif %}
+            <!--  The below wasn't working, but was intended to be a check for whether the file input was valid 
+            if(!valid_input){
+                document.getElementById("line1").textContent = "Your input file was invalid or corrupted. We apologize for the inconvenience - please try again.";
+                document.getElementById("line2").textContent = "" ;
+                document.getElementById("line3").textContent = "";
+            } -->
+        
+        
         </div>
+        
     </div>
 {% endblock %}

@@ -40,16 +40,23 @@ def results():
         f.save(f.filename)  
         
         #from that file, make a prediction
-        pred = evaluate_recording(f.filename)
-
+        pred, valid_input = evaluate_recording(f.filename)
+                
         #pred = evaluate_recording("http://drive.google.com/uc?export=view&id=114sSMDHPLrbjoj6xFDRtmAeVSqrOPAZk")
-        pred_class = assign_class(pred)
-        
-        pred = pred[0][0]
-        percent = 25 * (pred + 2)
-        if percent > 100:
-            percent = 100
-        elif percent < 0:
-            percent = 0
+        if valid_input:
+            pred_class = assign_class(pred)
             
-        return render_template("results.html", name = f.filename, pred = round(percent, 3), pred_class = pred_class)  
+            pred = pred[0][0]
+            percent = 25 * (pred + 2)
+            if percent > 100:
+                percent = 100
+            elif percent < 0:
+                percent = 0
+        
+        
+        else:
+            percent = 0
+            pred_class = "invalid"
+            
+            
+        return render_template("results.html", valid_input = valid_input, name = f.filename, pred = round(percent, 3), pred_class = pred_class)  

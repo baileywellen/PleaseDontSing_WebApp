@@ -67,15 +67,22 @@ def evaluate_recording(name_of_input):
     training_data = pd.read_csv(path)#./includes/audio_differences.csv")    
     ridge_reg = train_model(training_data)
     
+    pred = []
+    valid_input = False 
     #next, get the pitches of the recording we are evaluating
     pitches = get_freq_from_mp3(name_of_input)
-    clean_data = transform_data(pitches)
     
-    #create a prediction
-    pred = ridge_reg.predict(np.array(clean_data).reshape(1,-1))
-    print(pred)
+    #we will only calculate a prediction if the input was valid
+    if len(pitches) > 0:
+        clean_data = transform_data(pitches)
     
-    return pred    
+        #create a prediction
+        pred = ridge_reg.predict(np.array(clean_data).reshape(1,-1))
+    
+        valid_input = True
+   
+    
+    return pred, valid_input   
     
     
     

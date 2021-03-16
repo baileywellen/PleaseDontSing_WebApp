@@ -165,15 +165,21 @@ def make_arrays_same_length(pitches, confidences):
   
 #call all of our other functions from here - takes the filename of an mp3 file, processes the audio, and returns a list of length 1000
 def get_freq_from_mp3(filename):
-    #convert to a wav file 
-    sound = AudioSegment.from_mp3(filename)
-    sound.export("./user_wav.wav", format="wav")
     
-    #get the pitches and confidences from the user's input file
-    pitches, confidences = read_frequencies("./user_wav.wav")
-    
-    #clean the data to  be fed into the model
-    shortened_pitches = make_arrays_same_length(pitches, confidences)
+    try:
+        #convert to a wav file 
+        sound = AudioSegment.from_mp3(filename)
+        sound.export("./user_wav.wav", format="wav")
+        
+        #get the pitches and confidences from the user's input file
+        pitches, confidences = read_frequencies("./user_wav.wav")
+        
+        #clean the data to  be fed into the model
+        shortened_pitches = make_arrays_same_length(pitches, confidences)
+        
+    except:
+        shortened_pitches = []
+        
     return shortened_pitches
     
 
