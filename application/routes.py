@@ -32,7 +32,7 @@ def rate():
     return render_template("rate.html", rate = True)
 
 #process the audio    
-@app.route('/results', methods = ['POST'])  
+@app.route('/results', methods = ['GET','POST'])  
 def results():  
     if request.method == 'POST':  
         f = request.files['file']
@@ -58,5 +58,11 @@ def results():
             percent = 0
             pred_class = "invalid"
             
+        ret_val = render_template("results.html", submitted = True, valid_input = valid_input, name = f.filename, pred = round(percent, 3), pred_class = pred_class, results = True)  
+    
+    else: #if entering the results page by clicking 
+
+        ret_val = render_template("results.html", submitted = False, valid_input = False, name = "no_file", pred = "no_file", pred_class = "no_file", results = True)
+        
             
-        return render_template("results.html", valid_input = valid_input, name = f.filename, pred = round(percent, 3), pred_class = pred_class)  
+    return ret_val

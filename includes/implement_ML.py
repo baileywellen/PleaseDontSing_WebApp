@@ -48,9 +48,9 @@ def transform_data(list_of_freqs):
 
 def assign_class(z_score):
     ret_val = ""
-    if z_score < -0.61:
+    if z_score < -0.407:
         ret_val = "bad"
-    elif z_score > 0.51:
+    elif z_score > 0.484:
         ret_val = "good"
     else:
         ret_val = "okay"
