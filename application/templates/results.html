@@ -7,25 +7,21 @@
             {%if submitted %}
                 {%if valid_input %}
                     <p id = "line1"> File {{name}} uploaded successfully </p>
-                    <p id = "line2">We predict that people would rate you at {{pred}}%. 0% means not at all enjoyable, and 100% would mean you are practically Adele.</p>
-                    <p id = "line3">To put it directly, you sound {{pred_class}}. (options are good, okay, or bad) </p>
+                    <h3 id = "line2"> We would rate your recording a {{pred}}% on a 100 point scale. See the graph below to understand how offended you should be by that number.</h3>
+                    <img src = "{{ image }}"/> 
+                      <!-- <p id = "line3">To put it directly, you sound {{pred_class}}. (options are good, okay, or bad) </p> -->
+                    
                     
                 {% else %}
                     <p id = "line1"> Your input file was invalid or corrupted. We apologize for the inconvenience - please try again. </p>
                     
                 {% endif %}
             
+            {% else %}
+                <h2 id = "graph"> Upload a recording on the Home Tab to see your results. </h2>
             {% endif %}
             
-            <p id = "graph"> Below are all of the recordings :  </p>
-            <!--  The below wasn't working, but was intended to be a check for whether the file input was valid 
-            if(!valid_input){
-                document.getElementById("line1").textContent = "Your input file was invalid or corrupted. We apologize for the inconvenience - please try again.";
-                document.getElementById("line2").textContent = "" ;
-                document.getElementById("line3").textContent = "";
-            } -->
-        
-        
+            
         </div>
         
     </div>
