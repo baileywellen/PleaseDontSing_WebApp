@@ -6,11 +6,11 @@
         <!-- Below are placeholders for the text- if it is valid input, the code will fill it with a score. If not, it will tell the user -->
             {%if submitted %}
                 {%if valid_input %}
-                    <p id = "line1"> File {{name}} uploaded successfully </p>
-                    <h3 id = "line2"> We would rate your recording a {{pred}}% on a 100 point scale. See the graph below to understand how offended you should be by that number.</h3>
+                    <!-- <h3 id = "line2"> We rate your recording a {{pred}}% on a 100 point scale. See the graph below to understand how offended you should be by that number.</h3> -->
                     <img src = "{{ image }}"/> 
                       <!-- <p id = "line3">To put it directly, you sound {{pred_class}}. (options are good, okay, or bad) </p> -->
-                    
+                    <p id = "line1"> File {{name}} uploaded successfully </p>
+
                     
                 {% else %}
                     <p id = "line1"> Your input file was invalid or corrupted. We apologize for the inconvenience - please try again. </p>

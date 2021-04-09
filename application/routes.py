@@ -40,38 +40,44 @@ def rate():
 
 
 
-def plot_results(pred):
+def plot_results(percent, pred_class):
     # set up the figure
-    fig = plt.figure()
+    fig = plt.figure(edgecolor = 'black')
     ax = fig.add_subplot(1,1,1)
-    ax.set_xlim(-30,30)
-    ax.set_ylim(0,10)
+    ax.set_xlim(-2,102)
+    ax.set_ylim(0,6)
     
     # draw lines
-    xmin = -30
-    xmax = 30
+    xmin = -2
+    xmax = 102
     y = 5
-    height = 1
+    height = 0.5
     
     plt.hlines(y, xmin, xmax)
     plt.vlines(xmin, y - height / 2., y + height / 2.)
     plt.vlines(xmax, y - height / 2., y + height / 2.)
-    plt.vlines(0, y - height / 5., y + height / 5.)
+    plt.vlines(50, y - height / 5., y + height / 5.)
   
     # draw a point on the line
-    plt.plot(pred, y, 'ro', ms = 15, color = 'orange')
-    print(pred)    
+    plt.plot(percent, y,'ro',  ms = 15, color = 'orange')
+    #change the fonts 
+    body_font = {'fontname':'Arial'}
+    header_font = {'fontname':'Helvetica'}
+    
     
     # add numbers
-    plt.text(xmin - 1, y, 'our ears are bleeding', horizontalalignment='right')
-    plt.text(xmax + 1, y, 'you should go on American Idol!', horizontalalignment='left')
-    plt.text(0, y - 1.5, 'not too bad, \n but nothing to write home about...', horizontalalignment='center')
+    plt.text(xmin - 1, y, 'our ears are bleeding', horizontalalignment='right', **body_font, fontsize = 8)
+    plt.text(xmax + 1, y, 'you should go on American Idol!', horizontalalignment='left', **body_font, fontsize = 8)
+    plt.text(50, y - 1, 'not too bad, \n but nothing to write home about...', horizontalalignment='center',**body_font, fontsize = 8)
+    plt.text(50, y - 2, "We rate you a {} / 100".format(percent), horizontalalignment='center',**header_font,  fontsize=12)
+    plt.title("You sound {}!".format(pred_class), **header_font, fontsize=18)
     
+    
+    #plt.suptitle(title_string, , fontsize=18)
+    #plt.title(subtitle_string, fontsize=10)
     plt.axis('off')
     #adjust the formatting 
     plt.tight_layout()
-    #plt.subplots_adjust(top = 1, bottom = 0, right = 1, left = 0, 
-    #hspace = 0, wspace = 0)
     
     # Convert plot to PNG image
     pngImage = io.BytesIO()
@@ -111,7 +117,7 @@ def results():
                 percent = 0
                 
             #create an image from the recording 
-            image_prepared = plot_results(pred)
+            image_prepared = plot_results(round(percent,3), pred_class)
             
             ret_val = render_template("results.html", submitted = True, valid_input = valid_input, name = f.filename, pred = round(percent, 3), pred_class = pred_class, image = image_prepared, results = True)  
 

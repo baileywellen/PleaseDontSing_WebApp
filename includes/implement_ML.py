@@ -11,6 +11,10 @@ import numpy as np
 from includes.read_mp3 import get_freq_from_mp3
 import math
 
+#the below libraries are used to read the csv file from Google Drive, because Heroku wasn't picking it up when I uploaded the csv
+from io import StringIO
+import requests
+
 #takes a dataframe of the training data, trains with all of our available data, and returns the model
 def train_model(training_data):
     #read data into a dataframe 
@@ -60,11 +64,17 @@ def assign_class(z_score):
 
 #predict a z score of a new mp3 file 
 def evaluate_recording(name_of_input):
-    #first, train the model on our excel input
+
+    #first, train the model on our csv input (which is located in Google Drive )
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36'}
+    #use the sharing link from Google Drive and format it so it reads directly to the csv (instead of the sharing page )
     url = "https://drive.google.com/file/d/1QkeCYo7BEfiZMMzaZPYOlZZeOM4iYWg_/view?usp=sharing"
     path = 'https://drive.google.com/uc?export=download&id='+url.split('/')[-2]
+    #read the requests from that link
+    path_requests = requests.get(path, headers= headers).text
+    #read the data into a pandas dataframe
+    training_data = pd.read_csv(StringIO(path_requests), sep=",")
     
-    training_data = pd.read_csv(path)#./includes/audio_differences.csv")    
     ridge_reg = train_model(training_data)
     
     pred = []
