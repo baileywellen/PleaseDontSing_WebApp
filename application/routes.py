@@ -66,9 +66,9 @@ def plot_results(percent, pred_class):
     
     
     # add numbers
-    plt.text(xmin - 1, y, 'our ears are bleeding', horizontalalignment='right', **body_font, fontsize = 8)
-    plt.text(xmax + 1, y, 'you should go on American Idol!', horizontalalignment='left', **body_font, fontsize = 8)
-    plt.text(50, y - 1, 'not too bad, \n but nothing to write home about...', horizontalalignment='center',**body_font, fontsize = 8)
+    plt.text(xmin - 1, y, 'Our ears are bleeding', horizontalalignment='right', **body_font, fontsize = 8)
+    plt.text(xmax + 1, y, 'You should go on American Idol!', horizontalalignment='left', **body_font, fontsize = 8)
+    plt.text(50, y - 1, 'Not too bad, \n but nothing to write home about...', horizontalalignment='center',**body_font, fontsize = 8)
     plt.text(50, y - 2, "We rate you a {} / 100".format(percent), horizontalalignment='center',**header_font,  fontsize=12)
     plt.title("You sound {}!".format(pred_class), **header_font, fontsize=18)
     
